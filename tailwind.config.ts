@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				localazy: {
+          teal: '#3ABDB7',
+          coral: '#FF7F6B',
+          navy: '#1F3A5F',
+          cream: '#FFF8E1',
+          light: '#F9FAFC'
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,12 +92,59 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'fade-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
+        },
+        'slide-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(-20px)'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)'
+          }
+        },
+        'cat-run': {
+          '0%': {
+            transform: 'translateX(-100%) rotate(0deg)'
+          },
+          '50%': {
+            transform: 'translateX(50%) rotate(5deg)'
+          },
+          '100%': {
+            transform: 'translateX(0) rotate(0deg)'
+          }
+        },
+        'float': {
+          '0%, 100%': {
+            transform: 'translateY(0)'
+          },
+          '50%': {
+            transform: 'translateY(-10px)'
+          }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.6s ease-out',
+        'slide-in': 'slide-in 0.5s ease-out',
+        'cat-run': 'cat-run 2s ease-in-out',
+        'float': 'float 3s ease-in-out infinite'
+			},
+      fontFamily: {
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
