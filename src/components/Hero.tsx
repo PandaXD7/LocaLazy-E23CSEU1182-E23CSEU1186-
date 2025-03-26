@@ -1,64 +1,66 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight, TruckIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="pt-20 pb-16 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-blue-800">
-              Your Neighborhood, <span className="text-blue-500">Delivered</span>
-            </h1>
-            <p className="text-lg text-blue-700/80 mb-8 max-w-lg">
-              LocaLazy connects you with local stores within a 7-8km radius, bringing you fast delivery, 
-              quality products, and the satisfaction of supporting your local businesses.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button className="bg-blue-600 text-white px-5 py-2.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]">
+    <section className="container mx-auto px-4 py-16 md:py-24">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="space-y-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-blue-950 leading-tight">
+            Local Delivery <span className="text-blue-600">Made Simple</span>
+          </h1>
+          <p className="text-lg text-blue-800/80 max-w-xl">
+            Join our network of local couriers and businesses to provide fast, reliable delivery services in your community.
+          </p>
+          <div className="flex flex-wrap gap-4 pt-4">
+            <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full">
+              <Link to="/store-signup">
                 Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button className="bg-white text-blue-800 border border-blue-800/20 px-5 py-2.5 rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:translate-y-[-2px]">
-                Learn More
-              </Button>
-            </div>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg" className="border-blue-600 text-blue-700 hover:bg-blue-50 rounded-full">
+              Learn More
+            </Button>
           </div>
-          
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="tablet-mockup w-full max-w-md">
-              {/* Power Button */}
-              <div className="absolute right-[-7px] top-12 h-2 w-6 bg-gray-700 rounded-l-sm"></div>
-              {/* Volume Buttons */}
-              <div className="absolute left-[-7px] top-10 h-6 w-2 bg-gray-700 rounded-r-sm"></div>
-              <div className="absolute left-[-7px] top-20 h-6 w-2 bg-gray-700 rounded-r-sm"></div>
-              
-              {/* Screen */}
-              <div className="tablet-screen">
-                <img 
-                  src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2215&q=80" 
-                  alt="LocaLazy App Interface" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"></div>
-                
-                {/* Screen Reflection */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none"></div>
-              </div>
+        </div>
+        <div className="flex justify-center">
+          <div className="tablet-mockup">
+            <div className="tablet-screen">
+              <img 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b" 
+                alt="Local Delivery Pals Dashboard" 
+                className="w-full h-full object-cover rounded-md"
+              />
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-slate-200"></div>
             </div>
           </div>
         </div>
       </div>
       
-      <div className="mt-20 text-center container mx-auto px-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-800">
-          <span className="text-blue-500">Local</span> Service. <span className="text-blue-600">Lazy</span> Convenience.
-        </h2>
-        <p className="text-lg text-blue-700/80 max-w-2xl mx-auto">
-          Experience the best of both worlds - the quality of local shopping with the convenience of online delivery.
-        </p>
+      <div className="mt-24 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-900 mb-12">Trusted by businesses across the community</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-70">
+          <div className="flex justify-center items-center">
+            <TruckIcon className="h-8 w-8 mr-2 text-blue-800" />
+            <span className="text-lg font-semibold text-blue-800">QuickShip</span>
+          </div>
+          <div className="flex justify-center items-center">
+            <TruckIcon className="h-8 w-8 mr-2 text-blue-800" />
+            <span className="text-lg font-semibold text-blue-800">LocalEats</span>
+          </div>
+          <div className="flex justify-center items-center">
+            <TruckIcon className="h-8 w-8 mr-2 text-blue-800" />
+            <span className="text-lg font-semibold text-blue-800">CityGrocers</span>
+          </div>
+          <div className="flex justify-center items-center">
+            <TruckIcon className="h-8 w-8 mr-2 text-blue-800" />
+            <span className="text-lg font-semibold text-blue-800">FlashDelivery</span>
+          </div>
+        </div>
       </div>
     </section>
   );
