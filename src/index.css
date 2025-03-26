@@ -16,7 +16,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11.2%;
 
-    --primary: 187 50% 49%;
+    --primary: 210 100% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -25,7 +25,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 356 100% 71%;
+    --accent: 210 100% 60%;
     --accent-foreground: 222 47% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -84,7 +84,7 @@
   }
 
   body {
-    @apply bg-localazy-light text-foreground font-sans;
+    @apply bg-blue-50/50 text-foreground font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -98,19 +98,19 @@
   }
   
   .nav-link {
-    @apply relative px-2 py-1.5 text-foreground/80 font-medium transition-colors duration-200 
-           hover:text-foreground after:absolute after:bottom-0 after:left-0 after:h-0.5 
-           after:w-0 after:bg-localazy-teal after:transition-all after:duration-300 
+    @apply relative px-2 py-1.5 text-blue-700 font-medium transition-colors duration-200 
+           hover:text-blue-900 after:absolute after:bottom-0 after:left-0 after:h-0.5 
+           after:w-0 after:bg-blue-500 after:transition-all after:duration-300 
            hover:after:w-full;
   }
 
   .btn-primary {
-    @apply bg-localazy-teal text-white px-5 py-2.5 rounded-full font-medium shadow-md 
+    @apply bg-blue-600 text-white px-5 py-2.5 rounded-full font-medium shadow-md 
            hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px];
   }
 
   .btn-secondary {
-    @apply bg-white text-localazy-navy border border-localazy-navy/20 px-5 py-2.5 
+    @apply bg-white text-blue-800 border border-blue-800/20 px-5 py-2.5 
            rounded-full font-medium shadow-sm hover:shadow-md transition-all duration-300 
            hover:translate-y-[-2px];
   }
@@ -121,11 +121,11 @@
   }
 
   .tablet-mockup {
-    @apply relative bg-localazy-navy rounded-[2rem] p-3 shadow-2xl border-[8px] border-gray-800;
+    @apply relative bg-gradient-to-b from-blue-900 to-blue-950 rounded-[2rem] p-3 shadow-2xl border-[14px] border-gray-800;
   }
 
   .tablet-screen {
-    @apply bg-white rounded-[1rem] overflow-hidden h-full w-full;
+    @apply bg-white rounded-[1.25rem] overflow-hidden h-full w-full border border-gray-700;
   }
 
   .cat-container {
@@ -133,15 +133,15 @@
   }
 
   .blackboard {
-    @apply bg-slate-800 rounded-lg p-4 text-white shadow-lg border-4 border-slate-700;
+    @apply bg-blue-900 rounded-lg p-4 text-white shadow-lg border-4 border-blue-950;
   }
   
   .timeline-item {
-    @apply relative pl-8 pb-8 border-l-2 border-localazy-teal/70 last:border-l-0 last:pb-0;
+    @apply relative pl-8 pb-8 border-l-2 border-blue-500/70 last:border-l-0 last:pb-0;
   }
   
   .timeline-dot {
-    @apply absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-localazy-teal;
+    @apply absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-blue-500;
   }
   
   .checklist-item {
