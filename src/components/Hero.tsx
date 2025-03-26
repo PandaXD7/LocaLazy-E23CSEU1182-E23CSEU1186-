@@ -28,7 +28,7 @@ const Hero = () => {
           </div>
           
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="relative w-full max-w-md lg:max-w-lg aspect-[9/16] rounded-[2rem] bg-gradient-to-b from-blue-900 to-blue-950 p-3 shadow-xl border-[14px] border-gray-800">
+            <div className="tablet-mockup w-full max-w-md">
               {/* Power Button */}
               <div className="absolute right-[-7px] top-12 h-2 w-6 bg-gray-700 rounded-l-sm"></div>
               {/* Volume Buttons */}
@@ -36,7 +36,7 @@ const Hero = () => {
               <div className="absolute left-[-7px] top-20 h-6 w-2 bg-gray-700 rounded-r-sm"></div>
               
               {/* Screen */}
-              <div className="h-full w-full rounded-[1.25rem] overflow-hidden border border-gray-700 relative">
+              <div className="tablet-screen">
                 <img 
                   src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2215&q=80" 
                   alt="LocaLazy App Interface" 
@@ -46,12 +46,6 @@ const Hero = () => {
                 
                 {/* Screen Reflection */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none"></div>
-                
-                {/* Camera Notch */}
-                <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-1/4 h-6 bg-black rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-gray-600 rounded-full mr-1"></div>
-                  <div className="w-1 h-1 bg-gray-700 rounded-full"></div>
-                </div>
               </div>
             </div>
           </div>

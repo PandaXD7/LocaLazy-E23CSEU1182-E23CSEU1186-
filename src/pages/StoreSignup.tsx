@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { StoreSetup } from '@/components/StoreSetup';
 import { toast } from 'sonner';
+import Header from '@/components/Header';
 
 const StoreSignup = () => {
   const [setupComplete, setSetupComplete] = useState(false);
@@ -24,8 +25,9 @@ const StoreSignup = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
-      <div className="container mx-auto px-4 py-10">
+    <div className="min-h-screen bg-blue-50/50">
+      <Header />
+      <div className="container mx-auto px-4 py-10 pt-20">
         <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
           {setupComplete ? (
             <div className="text-center py-16 animate-fade-in">
@@ -34,13 +36,13 @@ const StoreSignup = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold mb-4 text-localazy-navy">Setup Complete!</h2>
-              <p className="text-gray-600 mb-8">
+              <h2 className="text-2xl font-bold mb-4 text-blue-800">Setup Complete!</h2>
+              <p className="text-blue-700/80 mb-8">
                 Your store has been successfully registered with LocaLazy. 
                 You'll be redirected to the dashboard shortly.
               </p>
               <div className="w-full max-w-xs mx-auto h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div className="h-full bg-localazy-teal animate-pulse rounded-full"></div>
+                <div className="h-full bg-blue-500 animate-pulse rounded-full"></div>
               </div>
             </div>
           ) : (

@@ -117,15 +117,15 @@
 
   .feature-card {
     @apply bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 
-           hover:translate-y-[-5px] border border-gray-100;
+           hover:translate-y-[-5px] border border-blue-100;
   }
 
   .tablet-mockup {
-    @apply relative bg-gradient-to-b from-blue-900 to-blue-950 rounded-[2rem] p-3 shadow-2xl border-[14px] border-gray-800;
+    @apply relative rounded-xl aspect-[4/3] bg-gray-800 p-2 shadow-2xl border-[10px] border-gray-900 max-w-[500px];
   }
 
   .tablet-screen {
-    @apply bg-white rounded-[1.25rem] overflow-hidden h-full w-full border border-gray-700;
+    @apply bg-white rounded-md overflow-hidden h-full w-full relative;
   }
 
   .cat-container {
@@ -159,4 +159,14 @@
   25% { transform: rotate(-10deg); }
   50% { transform: rotate(0deg); }
   75% { transform: rotate(-5deg); }
+}
+
+@keyframes cat-run {
+  0% { transform: translateX(-200%) rotate(0deg); }
+  60% { transform: translateX(0) rotate(0deg); }
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.animate-cat-run {
+  animation: cat-run 1.5s ease-in-out forwards;
 }
