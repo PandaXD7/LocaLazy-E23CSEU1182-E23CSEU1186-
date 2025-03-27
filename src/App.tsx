@@ -19,6 +19,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/signup/store" element={<StoreSignup />} />
+          <Route path="/signup/delivery" element={<StoreSignup />} /> {/* Using StoreSignup temporarily */}
+          <Route path="/signup/user" element={<StoreSignup />} /> {/* Using StoreSignup temporarily */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

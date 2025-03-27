@@ -17,27 +17,21 @@ interface SignupModalProps {
 }
 
 export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
-  const [step, setStep] = useState<'userType' | 'others' | 'login'>('userType');
+  const [step, setStep] = useState<'userType' | 'login'>('userType');
   const navigate = useNavigate();
   
   const handleUserTypeSelect = (type: string) => {
     if (type === 'user') {
       navigate('/signup/user');
       onClose();
-    } else if (type === 'others') {
-      setStep('others');
-    } else {
-      setStep('login');
-    }
-  };
-  
-  const handleOthersSelect = (type: string) => {
-    if (type === 'store') {
+    } else if (type === 'store') {
       navigate('/signup/store');
       onClose();
     } else if (type === 'delivery') {
       navigate('/signup/delivery');
       onClose();
+    } else if (type === 'login') {
+      setStep('login');
     }
   };
   
@@ -68,7 +62,7 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
               </button>
               
               <button
-                onClick={() => handleUserTypeSelect('others')}
+                onClick={() => handleUserTypeSelect('store')}
                 className="flex flex-col items-center p-6 rounded-xl border border-gray-200 hover:border-localazy-teal hover:bg-localazy-teal/5 transition-colors"
               >
                 <div className="h-16 w-16 rounded-full bg-localazy-teal/10 flex items-center justify-center mb-4">
@@ -81,7 +75,7 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
               </button>
               
               <button
-                onClick={() => handleUserTypeSelect('others')}
+                onClick={() => handleUserTypeSelect('delivery')}
                 className="flex flex-col items-center p-6 rounded-xl border border-gray-200 hover:border-localazy-teal hover:bg-localazy-teal/5 transition-colors"
               >
                 <div className="h-16 w-16 rounded-full bg-localazy-teal/10 flex items-center justify-center mb-4">
@@ -102,63 +96,6 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
               >
                 Log in
               </button>
-            </div>
-          </>
-        );
-        
-      case 'others':
-        return (
-          <>
-            <DialogHeader>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="absolute right-4 top-4"
-                onClick={() => setStep('userType')}
-              >
-                <X className="h-4 w-4" />
-              </Button>
-              <DialogTitle className="text-2xl font-bold text-center mb-2">Join as Partner</DialogTitle>
-              <DialogDescription className="text-center">
-                Choose your role in the LocaLazy ecosystem
-              </DialogDescription>
-            </DialogHeader>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <button
-                onClick={() => handleOthersSelect('store')}
-                className="flex flex-col items-center p-6 rounded-xl border border-gray-200 hover:border-localazy-teal hover:bg-localazy-teal/5 transition-colors"
-              >
-                <div className="h-16 w-16 rounded-full bg-localazy-teal/10 flex items-center justify-center mb-4">
-                  <Store className="h-8 w-8 text-localazy-teal" />
-                </div>
-                <h3 className="font-bold text-lg mb-2">Store Owner</h3>
-                <p className="text-sm text-gray-600 text-center">
-                  Register my local business on LocaLazy
-                </p>
-              </button>
-              
-              <button
-                onClick={() => handleOthersSelect('delivery')}
-                className="flex flex-col items-center p-6 rounded-xl border border-gray-200 hover:border-localazy-teal hover:bg-localazy-teal/5 transition-colors"
-              >
-                <div className="h-16 w-16 rounded-full bg-localazy-teal/10 flex items-center justify-center mb-4">
-                  <Truck className="h-8 w-8 text-localazy-teal" />
-                </div>
-                <h3 className="font-bold text-lg mb-2">Delivery Partner</h3>
-                <p className="text-sm text-gray-600 text-center">
-                  Deliver items and earn with LocaLazy
-                </p>
-              </button>
-            </div>
-            
-            <div className="mt-8 text-center">
-              <Button 
-                variant="outline" 
-                onClick={() => setStep('userType')}
-              >
-                Back to Options
-              </Button>
             </div>
           </>
         );
