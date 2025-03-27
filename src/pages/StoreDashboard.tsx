@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, Plus, Check, X, ShoppingCart, LineChart, Circle, Camera, Image } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -840,3 +841,15 @@ const StoreDashboard = () => {
               variant="outline"
               className="flex flex-col items-center justify-center p-6"
               onClick={openCamera}
+            >
+              <Camera className="h-8 w-8 mb-2" />
+              <span>Camera</span>
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+};
+
+export default StoreDashboard;
