@@ -20,7 +20,7 @@ const StoreSignup = () => {
     
     // Redirect to dashboard after a short delay
     setTimeout(() => {
-      navigate('/');
+      navigate('/store/dashboard');
     }, 2000);
   };
   

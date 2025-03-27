@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Check, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -9,7 +9,6 @@ interface StoreSetupProps {
 
 export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
   const [step, setStep] = useState<number>(0);
-  const [catPosition, setCatPosition] = useState<'start' | 'end'>('start');
   const [formData, setFormData] = useState({
     storeName: '',
     email: '',
@@ -17,16 +16,6 @@ export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
     tagline: '',
     description: ''
   });
-  
-  const catRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (step === 4) {
-      setTimeout(() => {
-        setCatPosition('end');
-      }, 500);
-    }
-  }, [step]);
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -52,38 +41,6 @@ export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
       case 0:
         return (
           <div className="animate-fade-in">
-            <div 
-              className="cat-container cursor-pointer mb-10 relative mx-auto"
-              onClick={nextStep}
-            >
-              <div className="blackboard max-w-md mx-auto shadow-xl relative mb-4">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-1 h-20 bg-slate-700"></div>
-                <h3 className="text-2xl font-bold mb-3">Hi!! I'm Meko</h3>
-                <p className="text-white/80">
-                  I'll help you to setup your store on LocaLazy! Click on this board to continue.
-                </p>
-                <div className="absolute -right-12 -bottom-6 transform -rotate-12 w-10 h-10">
-                  <span className="block h-3 w-3 rounded-full bg-slate-400"></span>
-                </div>
-                <div className="absolute -left-12 -bottom-6 transform rotate-12 w-10 h-10">
-                  <span className="block h-3 w-3 rounded-full bg-slate-400"></span>
-                </div>
-              </div>
-              
-              <div className="w-32 h-32 relative mx-auto">
-                <img 
-                  src="https://cdn.dribbble.com/users/212646/screenshots/17006517/media/b39a108d0dd2ba0e1bafc30895e0a48e.png?resize=1600x1200&vertical=center" 
-                  alt="Meko the Cat" 
-                  className="w-full object-contain"
-                />
-                <div className="cat-wave absolute top-[40%] right-[20%] w-10 h-8 origin-bottom-right">
-                  <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 15C1 15 5 5 15 5C25 5 29 15 29 15" stroke="#000" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-            
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-4 text-localazy-navy">Welcome to Store Setup</h2>
               <p className="text-gray-600 mb-6">
@@ -333,28 +290,6 @@ export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
                 <span>Store Description</span>
               </div>
             </div>
-            
-            {catPosition === 'end' && (
-              <div 
-                ref={catRef}
-                className="cat-container mt-8 text-center animate-cat-run"
-              >
-                <div className="blackboard max-w-md mx-auto shadow-xl relative mb-4">
-                  <h3 className="text-2xl font-bold mb-3">Yay!!</h3>
-                  <p className="text-white/80">
-                    You are close to your destination!
-                  </p>
-                </div>
-                
-                <div className="w-32 h-32 relative mx-auto">
-                  <img 
-                    src="https://cdn.dribbble.com/users/212646/screenshots/17006517/media/b39a108d0dd2ba0e1bafc30895e0a48e.png?resize=1600x1200&vertical=center" 
-                    alt="Meko the Cat" 
-                    className="w-full object-contain"
-                  />
-                </div>
-              </div>
-            )}
           </div>
         );
     }
