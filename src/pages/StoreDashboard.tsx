@@ -685,11 +685,13 @@ const StoreDashboard = () => {
               <h2 className="text-2xl font-semibold mb-6 text-gray-800">Sales Summary</h2>
               
               <div className="mb-6">
-                <TabsList className="grid w-full max-w-md grid-cols-3">
-                  <TabsTrigger value="daily" onClick={() => setSalesPeriod('daily')}>Daily</TabsTrigger>
-                  <TabsTrigger value="weekly" onClick={() => setSalesPeriod('weekly')}>Weekly</TabsTrigger>
-                  <TabsTrigger value="monthly" onClick={() => setSalesPeriod('monthly')}>Monthly</TabsTrigger>
-                </TabsList>
+                <Tabs defaultValue="daily">
+                  <TabsList className="grid w-full max-w-md grid-cols-3">
+                    <TabsTrigger value="daily" onClick={() => setSalesPeriod('daily')}>Daily</TabsTrigger>
+                    <TabsTrigger value="weekly" onClick={() => setSalesPeriod('weekly')}>Weekly</TabsTrigger>
+                    <TabsTrigger value="monthly" onClick={() => setSalesPeriod('monthly')}>Monthly</TabsTrigger>
+                  </TabsList>
+                </Tabs>
               </div>
               
               <div className="p-6 border rounded-lg mb-8">
