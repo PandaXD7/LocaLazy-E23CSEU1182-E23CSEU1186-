@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Plus, Check, X, ShoppingCart, LineChart, Circle } from 'lucide-react';
+import { Search, Plus, Check, X, ShoppingCart, LineChart, Circle, Camera, Image } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -7,6 +7,7 @@ import { Switch } from '@/components/ui/switch';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import Header from '@/components/Header';
 import { toast } from 'sonner';
 
@@ -143,6 +144,7 @@ const StoreDashboard = () => {
     inStock: true,
     imageUrl: ''
   });
+  const [imageDialogOpen, setImageDialogOpen] = useState(false);
   
   // Filter products based on search query
   const filteredProducts = products.filter(product => 
@@ -287,6 +289,53 @@ const StoreDashboard = () => {
       const product = products.find(p => p.id === item.productId);
       return `${product?.name || 'Unknown Product'} (x${item.quantity})`;
     }).join(', ');
+  };
+  
+  // Function to open file picker
+  const openGallery = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          setNewProduct(prev => ({
+            ...prev,
+            imageUrl: reader.result as string
+          }));
+          toast.success('Image selected successfully');
+        };
+        reader.readAsDataURL(file);
+      }
+      setImageDialogOpen(false);
+    };
+    input.click();
+  };
+  
+  // Function to open camera
+  const openCamera = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.capture = 'environment';
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          setNewProduct(prev => ({
+            ...prev,
+            imageUrl: reader.result as string
+          }));
+          toast.success('Image captured successfully');
+        };
+        reader.readAsDataURL(file);
+      }
+      setImageDialogOpen(false);
+    };
+    input.click();
   };
   
   return (
@@ -450,17 +499,40 @@ const StoreDashboard = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700 mb-1">
-                    Product Image URL (Optional)
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Product Image
                   </label>
-                  <Input
-                    id="imageUrl"
-                    name="imageUrl"
-                    value={newProduct.imageUrl}
-                    onChange={handleNewProductChange}
-                    placeholder="Enter image URL"
-                    className="w-full"
-                  />
+                  <div className="flex items-center space-x-3">
+                    <Button 
+                      type="button" 
+                      variant="outline"
+                      onClick={() => setImageDialogOpen(true)}
+                      className="flex items-center"
+                    >
+                      <Plus className="mr-1 h-4 w-4" />
+                      Add Image
+                    </Button>
+                    
+                    {newProduct.imageUrl && (
+                      <div className="relative">
+                        <img 
+                          src={newProduct.imageUrl} 
+                          alt="Product preview" 
+                          className="w-16 h-16 object-cover rounded-md border"
+                        />
+                        <Button
+                          type="button"
+                          variant="destructive"
+                          size="icon"
+                          className="absolute -top-2 -right-2 h-6 w-6 rounded-full"
+                          onClick={() => setNewProduct(prev => ({ ...prev, imageUrl: '' }))}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">Add a product image from camera or gallery</p>
                 </div>
                 
                 <div className="flex items-center">
@@ -748,8 +820,23 @@ const StoreDashboard = () => {
           )}
         </div>
       </div>
-    </div>
-  );
-};
-
-export default StoreDashboard;
+      
+      {/* Image Source Dialog */}
+      <Dialog open={imageDialogOpen} onOpenChange={setImageDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Add Product Image</DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-2 gap-4 py-4">
+            <Button
+              variant="outline"
+              className="flex flex-col items-center justify-center p-6"
+              onClick={openGallery}
+            >
+              <Image className="h-8 w-8 mb-2" />
+              <span>Gallery</span>
+            </Button>
+            <Button
+              variant="outline"
+              className="flex flex-col items-center justify-center p-6"
+              onClick={openCamera}
