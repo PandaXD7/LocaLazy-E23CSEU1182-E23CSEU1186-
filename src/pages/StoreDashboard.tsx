@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Search, Plus, Check, X, ShoppingCart, LineChart, Circle, Camera, Image } from 'lucide-react';
+import { Search, Plus, Check, X, ShoppingCart, LineChart, Circle, Camera, Image, Store, MapPin, Mail, Phone, Clock } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -17,7 +16,11 @@ const initialStoreData = {
   name: 'My Amazing Store',
   tagline: 'The best products in town!',
   description: 'We offer high-quality products at affordable prices.',
-  businessType: 'grocery'
+  businessType: 'grocery',
+  address: '123 Market Street, Bangalore, Karnataka',
+  email: 'contact@amazingstore.com',
+  phone: '+91 9876543210',
+  openingHours: '9:00 AM - 9:00 PM'
 };
 
 // Sample product data structure
@@ -344,14 +347,40 @@ const StoreDashboard = () => {
       <Header />
       <div className="container mx-auto px-4 py-10 pt-20">
         <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-          {/* Store header section */}
-          <div className="text-center mb-8 pb-8 border-b border-gray-200">
-            <h1 className="text-3xl font-bold text-blue-800">{storeData.name}</h1>
-            <p className="text-xl text-gray-600 my-2">{storeData.tagline}</p>
-            <p className="text-gray-500 max-w-2xl mx-auto">{storeData.description}</p>
-            <p className="mt-2 inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-              {storeData.businessType.charAt(0).toUpperCase() + storeData.businessType.slice(1)}
-            </p>
+          {/* Store header section with enhanced details */}
+          <div className="mb-8 pb-8 border-b border-gray-200">
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+              <div>
+                <h1 className="text-3xl font-bold text-blue-800">{storeData.name}</h1>
+                <p className="text-xl text-gray-600 my-2">{storeData.tagline}</p>
+              </div>
+              <div className="mt-4 md:mt-0">
+                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                  {storeData.businessType.charAt(0).toUpperCase() + storeData.businessType.slice(1)}
+                </span>
+              </div>
+            </div>
+            
+            <p className="text-gray-500 max-w-2xl mb-4">{storeData.description}</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+              <div className="flex items-start space-x-2">
+                <MapPin className="h-5 w-5 text-blue-500 mt-0.5" />
+                <span className="text-gray-600">{storeData.address}</span>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Mail className="h-5 w-5 text-blue-500 mt-0.5" />
+                <span className="text-gray-600">{storeData.email}</span>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Phone className="h-5 w-5 text-blue-500 mt-0.5" />
+                <span className="text-gray-600">{storeData.phone}</span>
+              </div>
+              <div className="flex items-start space-x-2">
+                <Clock className="h-5 w-5 text-blue-500 mt-0.5" />
+                <span className="text-gray-600">{storeData.openingHours}</span>
+              </div>
+            </div>
           </div>
           
           {/* Navigation tabs */}
@@ -800,56 +829,4 @@ const StoreDashboard = () => {
                     {salesPeriod === 'weekly' && 'This Week\'s Sales'}
                     {salesPeriod === 'monthly' && 'This Month\'s Sales'}
                   </h3>
-                  <p className="text-3xl font-bold text-green-700">
-                    ₹{salesData[salesPeriod][salesData[salesPeriod].length - 1].sales.toLocaleString()}
-                  </p>
-                </div>
-                
-                <div className="bg-blue-50 p-6 rounded-lg shadow-sm">
-                  <h3 className="font-semibold text-lg mb-2">Total Orders</h3>
-                  <p className="text-3xl font-bold text-blue-700">{orders.length}</p>
-                </div>
-                
-                <div className="bg-purple-50 p-6 rounded-lg shadow-sm">
-                  <h3 className="font-semibold text-lg mb-2">Average Order Value</h3>
-                  <p className="text-3xl font-bold text-purple-700">
-                    ₹{(orders.reduce((sum, order) => sum + order.totalAmount, 0) / (orders.length || 1)).toFixed(2)}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-      
-      {/* Image Source Dialog */}
-      <Dialog open={imageDialogOpen} onOpenChange={setImageDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Add Product Image</DialogTitle>
-          </DialogHeader>
-          <div className="grid grid-cols-2 gap-4 py-4">
-            <Button
-              variant="outline"
-              className="flex flex-col items-center justify-center p-6"
-              onClick={openGallery}
-            >
-              <Image className="h-8 w-8 mb-2" />
-              <span>Gallery</span>
-            </Button>
-            <Button
-              variant="outline"
-              className="flex flex-col items-center justify-center p-6"
-              onClick={openCamera}
-            >
-              <Camera className="h-8 w-8 mb-2" />
-              <span>Camera</span>
-            </Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </div>
-  );
-};
-
-export default StoreDashboard;
+                  <p className="

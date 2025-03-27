@@ -38,7 +38,7 @@ const Hero = () => {
               {/* Screen */}
               <div className="tablet-screen">
                 <img 
-                  src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2215&q=80" 
+                  src="https://images.unsplash.com/photo-1674826604435-58812ff20ac3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
                   alt="LocaLazy App Interface" 
                   className="w-full h-full object-cover"
                 />
