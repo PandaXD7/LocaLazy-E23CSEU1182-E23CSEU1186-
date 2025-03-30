@@ -825,8 +825,8 @@ const StoreDashboard = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="bg-green-50 p-6 rounded-lg shadow-sm">
                   <h3 className="font-semibold text-lg mb-2">
-                    {salesPeriod === 'daily' && 'Today\'s Sales'}
-                    {salesPeriod === 'weekly' && 'This Week\'s Sales'}
-                    {salesPeriod === 'monthly' && 'This Month\'s Sales'}
+                    {salesPeriod === 'daily' && "Today's Sales"}
+                    {salesPeriod === 'weekly' && "This Week's Sales"}
+                    {salesPeriod === 'monthly' && "This Month's Sales"}
                   </h3>
                   <p className="
