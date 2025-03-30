@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Search, Plus, Check, X, ShoppingCart, LineChart, Circle, Camera, Image, Store, MapPin, Mail, Phone, Clock } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -341,6 +342,35 @@ const StoreDashboard = () => {
     };
     input.click();
   };
+
+  // Dialog component for image selection
+  const ImageSelectionDialog = () => (
+    <Dialog open={imageDialogOpen} onOpenChange={setImageDialogOpen}>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Add Product Image</DialogTitle>
+        </DialogHeader>
+        <div className="grid grid-cols-2 gap-4 py-4">
+          <Button 
+            onClick={openCamera}
+            variant="outline"
+            className="flex flex-col items-center justify-center h-24"
+          >
+            <Camera className="mb-2 h-8 w-8" />
+            <span>Take Photo</span>
+          </Button>
+          <Button 
+            onClick={openGallery}
+            variant="outline"
+            className="flex flex-col items-center justify-center h-24"
+          >
+            <Image className="mb-2 h-8 w-8" />
+            <span>Choose from Gallery</span>
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
   
   return (
     <div className="min-h-screen bg-blue-50/50">
@@ -829,4 +859,34 @@ const StoreDashboard = () => {
                     {salesPeriod === 'weekly' && "This Week's Sales"}
                     {salesPeriod === 'monthly' && "This Month's Sales"}
                   </h3>
-                  <p className="
+                  <p className="text-3xl font-bold text-green-700">
+                    ₹{salesData[salesPeriod][salesData[salesPeriod].length - 1]?.sales.toLocaleString() || 0}
+                  </p>
+                </div>
+                
+                <div className="bg-blue-50 p-6 rounded-lg shadow-sm">
+                  <h3 className="font-semibold text-lg mb-2">Average Sales</h3>
+                  <p className="text-3xl font-bold text-blue-700">
+                    ₹{Math.round(salesData[salesPeriod].reduce((sum, item) => sum + item.sales, 0) / salesData[salesPeriod].length).toLocaleString()}
+                  </p>
+                </div>
+                
+                <div className="bg-purple-50 p-6 rounded-lg shadow-sm">
+                  <h3 className="font-semibold text-lg mb-2">Total Sales</h3>
+                  <p className="text-3xl font-bold text-purple-700">
+                    ₹{salesData[salesPeriod].reduce((sum, item) => sum + item.sales, 0).toLocaleString()}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Image Selection Dialog */}
+          <ImageSelectionDialog />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default StoreDashboard;
