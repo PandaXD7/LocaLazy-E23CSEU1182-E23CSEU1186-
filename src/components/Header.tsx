@@ -16,10 +16,10 @@ const Header = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
+          <div className="h-10 w-10 rounded-full bg-localazy-teal flex items-center justify-center">
             <span className="text-white font-bold text-xl">L</span>
           </div>
-          <span className="font-display font-bold text-xl text-blue-800">LocaLazy</span>
+          <span className="font-display font-bold text-xl text-localazy-navy">LocaLazy</span>
         </Link>
         
         {/* Desktop Navigation */}
@@ -44,15 +44,15 @@ const Header = () => {
           
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" className="text-blue-600">
+            <Button variant="ghost" size="icon" className="text-localazy-teal">
               <ShoppingBag className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="text-blue-600">
+            <Button variant="ghost" size="icon" className="text-localazy-teal">
               <User className="h-5 w-5" />
             </Button>
             <Button 
               onClick={() => setIsSignupOpen(true)}
-              className="bg-blue-600 text-white px-5 py-2.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]"
+              className="bg-localazy-teal text-white px-5 py-2.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]"
             >
               Login / Sign Up
             </Button>
@@ -63,7 +63,7 @@ const Header = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="lg:hidden text-blue-600"
+          className="lg:hidden text-localazy-teal"
           onClick={toggleMenu}
         >
           {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -97,7 +97,7 @@ const Header = () => {
                 setIsSignupOpen(true);
                 setIsMenuOpen(false);
               }}
-              className="bg-blue-600 text-white w-full px-5 py-2.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]"
+              className="bg-localazy-teal text-white w-full px-5 py-2.5 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:translate-y-[-2px]"
             >
               Login / Sign Up
             </Button>
