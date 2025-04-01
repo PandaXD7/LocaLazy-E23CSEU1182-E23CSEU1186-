@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ShoppingBag, Coffee, Book, Utensils, Pizza, Gift } from 'lucide-react';
+import { ShoppingBag, Book, Gift, Shirt, Home, Cake } from 'lucide-react';
 
 const categories = [
   {
@@ -11,31 +11,31 @@ const categories = [
     color: 'bg-blue-50'
   },
   {
-    title: 'Cafés',
-    icon: Coffee,
-    description: 'Artisanal coffees and treats from local cafés and bakeries',
-    image: 'https://images.unsplash.com/photo-1512568400610-62da28bc8a13?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80',
-    color: 'bg-blue-100'
-  },
-  {
     title: 'Stationery',
     icon: Book,
     description: 'Books, notebooks, and office supplies from nearby shops',
     image: 'https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80',
-    color: 'bg-blue-50'
-  },
-  {
-    title: 'Restaurants',
-    icon: Utensils,
-    description: 'Delicious meals from your favorite local restaurants',
-    image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80',
     color: 'bg-blue-100'
   },
   {
-    title: 'Fast Food',
-    icon: Pizza,
-    description: 'Quick bites and comfort food from local eateries',
-    image: 'https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2369&q=80',
+    title: 'Fashion',
+    icon: Shirt,
+    description: 'Clothing, accessories and footwear from local boutiques',
+    image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80',
+    color: 'bg-blue-50'
+  },
+  {
+    title: 'Home Decor',
+    icon: Home,
+    description: 'Furniture, decorations and home essentials from neighborhood stores',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80',
+    color: 'bg-blue-100'
+  },
+  {
+    title: 'Bakery',
+    icon: Cake,
+    description: 'Fresh baked goods from local bakeries',
+    image: 'https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80',
     color: 'bg-blue-50'
   },
   {

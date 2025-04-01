@@ -48,17 +48,17 @@ interface Order {
 const initialProducts: Product[] = [
   {
     id: '1',
-    name: 'Premium Coffee',
+    name: 'Premium Rice',
     price: 249.99,
-    category: 'Beverages',
+    category: 'Groceries',
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80'
+    imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=200&q=80'
   },
   {
     id: '2',
-    name: 'Organic Tea',
+    name: 'Organic Flour',
     price: 149.99,
-    category: 'Beverages',
+    category: 'Groceries',
     inStock: true
   },
   {

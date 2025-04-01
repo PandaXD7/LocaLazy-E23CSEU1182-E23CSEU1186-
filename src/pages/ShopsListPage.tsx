@@ -20,17 +20,17 @@ const mockShops = [
   },
   {
     id: '2',
-    name: 'MediQuick Pharmacy',
-    description: 'Fast delivery of medicines and healthcare products',
-    imageUrl: 'https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-    rating: 4.5,
-    deliveryTime: '15-20 min',
-    distance: '0.8 km'
+    name: 'Quick Mart',
+    description: 'Convenience store with all daily necessities',
+    imageUrl: 'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    rating: 4.3,
+    deliveryTime: '20-25 min',
+    distance: '1.5 km'
   },
   {
     id: '3',
     name: 'Sweet Delight Bakery',
-    description: 'Fresh baked goods, cakes and pastries delivered to your doorstep',
+    description: 'Fresh baked goods delivered to your doorstep',
     imageUrl: 'https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
     rating: 4.8,
     deliveryTime: '30-40 min',
@@ -38,12 +38,12 @@ const mockShops = [
   },
   {
     id: '4',
-    name: 'Quick Mart',
-    description: 'Convenience store with all daily necessities',
-    imageUrl: 'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-    rating: 4.3,
-    deliveryTime: '20-25 min',
-    distance: '1.5 km'
+    name: 'Fashion Forward',
+    description: 'Trendy clothes and accessories from local boutiques',
+    imageUrl: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+    rating: 4.6,
+    deliveryTime: '35-45 min',
+    distance: '2.5 km'
   }
 ];
 

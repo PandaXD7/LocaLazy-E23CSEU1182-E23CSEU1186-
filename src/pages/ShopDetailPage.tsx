@@ -30,23 +30,23 @@ const mockShopsData: Record<string, Shop> = {
   },
   '2': {
     id: '2',
-    name: 'MediQuick Pharmacy',
-    description: 'Fast delivery of medicines and healthcare products',
-    imageUrl: 'https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    rating: 4.5,
-    deliveryTime: '15-20 min',
-    distance: '0.8 km',
+    name: 'Quick Mart',
+    description: 'Convenience store with all daily necessities',
+    imageUrl: 'https://images.unsplash.com/photo-1604719312566-8912e9c8a213?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    rating: 4.3,
+    deliveryTime: '20-25 min',
+    distance: '1.5 km',
     items: [
-      { id: '201', name: 'Paracetamol', price: 30, description: 'Pain reliever, pack of 10 tablets', category: 'Medicines' },
-      { id: '202', name: 'Hand Sanitizer', price: 75, description: '500ml bottle, 70% alcohol', category: 'Hygiene' },
-      { id: '203', name: 'Face Masks', price: 120, description: 'Disposable 3-ply masks, pack of 10', category: 'Hygiene' },
-      { id: '204', name: 'Vitamin C', price: 180, description: '60 tablets, immune support', category: 'Supplements' }
+      { id: '201', name: 'Toilet Paper', price: 95, description: 'Pack of 6 rolls', category: 'Household' },
+      { id: '202', name: 'Dish Soap', price: 65, description: '500ml bottle', category: 'Cleaning' },
+      { id: '203', name: 'Laundry Detergent', price: 220, description: '1kg box, for all washing machines', category: 'Cleaning' },
+      { id: '204', name: 'Batteries', price: 120, description: 'AA batteries, pack of 8', category: 'Electronics' }
     ]
   },
   '3': {
     id: '3',
     name: 'Sweet Delight Bakery',
-    description: 'Fresh baked goods, cakes and pastries delivered to your doorstep',
+    description: 'Fresh baked goods delivered to your doorstep',
     imageUrl: 'https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     rating: 4.8,
     deliveryTime: '30-40 min',
@@ -56,6 +56,21 @@ const mockShopsData: Record<string, Shop> = {
       { id: '302', name: 'Croissants', price: 80, description: 'Butter croissants, pack of 4', category: 'Pastries' },
       { id: '303', name: 'Whole Wheat Bread', price: 45, description: 'Healthy whole wheat bread loaf', category: 'Bread' },
       { id: '304', name: 'Cookies', price: 120, description: 'Assorted cookies, pack of 12', category: 'Biscuits' }
+    ]
+  },
+  '4': {
+    id: '4',
+    name: 'Fashion Forward',
+    description: 'Trendy clothes and accessories from local boutiques',
+    imageUrl: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    rating: 4.6,
+    deliveryTime: '35-45 min',
+    distance: '2.5 km',
+    items: [
+      { id: '401', name: 'Cotton T-shirt', price: 499, description: 'Comfortable cotton t-shirt, available in multiple colors', category: 'Clothing' },
+      { id: '402', name: 'Denim Jeans', price: 1299, description: 'Classic denim jeans, slim fit', category: 'Clothing' },
+      { id: '403', name: 'Leather Belt', price: 599, description: 'Genuine leather belt with metal buckle', category: 'Accessories' },
+      { id: '404', name: 'Canvas Shoes', price: 899, description: 'Casual canvas shoes, perfect for everyday wear', category: 'Footwear' }
     ]
   }
 };
