@@ -91,12 +91,11 @@ export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="grocery">Grocery Store</SelectItem>
-                  <SelectItem value="restaurant">Restaurant/Food</SelectItem>
-                  <SelectItem value="pharmacy">Pharmacy</SelectItem>
                   <SelectItem value="electronics">Electronics</SelectItem>
                   <SelectItem value="clothing">Clothing & Apparel</SelectItem>
                   <SelectItem value="homegoods">Home Goods</SelectItem>
                   <SelectItem value="stationery">Books & Stationery</SelectItem>
+                  <SelectItem value="bakery">Bakery</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
