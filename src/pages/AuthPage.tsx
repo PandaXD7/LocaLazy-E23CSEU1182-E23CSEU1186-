@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
@@ -11,6 +10,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
 import { useAppContext } from '@/contexts/AppContext';
 import Header from '@/components/Header';
+import BackButton from '@/components/BackButton';
+import { ArrowLeft } from 'lucide-react';
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -96,8 +97,9 @@ const AuthPage = ({ userType = 'customer' }: { userType?: 'customer' | 'delivery
   };
   
   return (
-    <div className="min-h-screen bg-blue-50/50">
+    <div className="min-h-screen bg-blue-50/50 relative">
       <Header />
+      <BackButton />
       <div className="container mx-auto px-4 py-10 pt-20">
         <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8">
           <h1 className="text-2xl font-bold text-center mb-6">

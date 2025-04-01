@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { StoreSetup } from '@/components/StoreSetup';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
+import BackButton from '@/components/BackButton';
 
 const StoreSignup = () => {
   const [setupComplete, setSetupComplete] = useState(false);
@@ -25,8 +26,9 @@ const StoreSignup = () => {
   };
   
   return (
-    <div className="min-h-screen bg-blue-50/50">
+    <div className="min-h-screen bg-blue-50/50 relative">
       <Header />
+      <BackButton />
       <div className="container mx-auto px-4 py-10 pt-20">
         <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
           {setupComplete ? (

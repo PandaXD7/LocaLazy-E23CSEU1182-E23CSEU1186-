@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, User, Store, Truck } from 'lucide-react';
@@ -169,14 +168,6 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
         return (
           <>
             <DialogHeader>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="absolute right-4 top-4"
-                onClick={() => setStep('userType')}
-              >
-                <X className="h-4 w-4" />
-              </Button>
               <DialogTitle className="text-2xl font-bold text-center mb-2">Welcome Back</DialogTitle>
               <DialogDescription className="text-center">
                 Log in to your LocaLazy account
@@ -250,17 +241,15 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md md:max-w-xl">
-        {/* Only show one close button */}
-        {step === 'userType' && (
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="absolute right-4 top-4"
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        )}
+        {/* Only one close button */}
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="absolute right-4 top-4"
+          onClick={onClose}
+        >
+          <X className="h-4 w-4" />
+        </Button>
         {renderContent()}
       </DialogContent>
     </Dialog>

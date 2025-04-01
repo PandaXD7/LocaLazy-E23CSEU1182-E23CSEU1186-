@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Upload, Check, X } from 'lucide-react';
+import { Upload, Check, X, ArrowLeft } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
+import BackButton from '@/components/BackButton';
 import { useAppContext } from '@/contexts/AppContext';
 
 const setupSchema = z.object({
@@ -80,8 +81,9 @@ const DeliverySetupPage = () => {
   };
   
   return (
-    <div className="min-h-screen bg-blue-50/50">
+    <div className="min-h-screen bg-blue-50/50 relative">
       <Header />
+      <BackButton />
       <div className="container mx-auto px-4 py-10 pt-20">
         <div className="max-w-xl mx-auto bg-white rounded-xl shadow-md p-8">
           <h1 className="text-2xl font-bold text-center mb-8">
