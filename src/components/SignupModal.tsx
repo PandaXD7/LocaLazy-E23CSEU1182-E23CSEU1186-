@@ -22,7 +22,7 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   
   const handleUserTypeSelect = (type: string) => {
     if (type === 'user') {
-      navigate('/signup/user');
+      navigate('/auth');
       onClose();
     } else if (type === 'store') {
       navigate('/signup/store');
@@ -59,6 +59,31 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 <p className="text-sm text-gray-600 text-center">
                   I want to order from local stores
                 </p>
+                <div className="mt-4 flex flex-col gap-2 w-full">
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/auth');
+                      onClose();
+                    }}
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    Login
+                  </Button>
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/auth');
+                      onClose();
+                    }}
+                    size="sm"
+                    className="w-full bg-localazy-teal"
+                  >
+                    Sign Up
+                  </Button>
+                </div>
               </button>
               
               <button
@@ -72,6 +97,31 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 <p className="text-sm text-gray-600 text-center">
                   I want to register my store
                 </p>
+                <div className="mt-4 flex flex-col gap-2 w-full">
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/signup/store');
+                      onClose();
+                    }}
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    Login
+                  </Button>
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/signup/store');
+                      onClose();
+                    }}
+                    size="sm"
+                    className="w-full bg-localazy-teal"
+                  >
+                    Sign Up
+                  </Button>
+                </div>
               </button>
               
               <button
@@ -85,16 +135,31 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 <p className="text-sm text-gray-600 text-center">
                   I want to become a delivery partner
                 </p>
-              </button>
-            </div>
-            
-            <div className="mt-8 text-center text-sm text-gray-600">
-              Already have an account?{" "}
-              <button 
-                onClick={() => handleUserTypeSelect('login')}
-                className="text-localazy-teal font-medium hover:underline"
-              >
-                Log in
+                <div className="mt-4 flex flex-col gap-2 w-full">
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/signup/delivery');
+                      onClose();
+                    }}
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    Login
+                  </Button>
+                  <Button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/signup/delivery');
+                      onClose();
+                    }}
+                    size="sm"
+                    className="w-full bg-localazy-teal"
+                  >
+                    Sign Up
+                  </Button>
+                </div>
               </button>
             </div>
           </>
@@ -185,14 +250,17 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md md:max-w-xl">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="absolute right-4 top-4"
-          onClick={onClose}
-        >
-          <X className="h-4 w-4" />
-        </Button>
+        {/* Only show one close button */}
+        {step === 'userType' && (
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="absolute right-4 top-4"
+            onClick={onClose}
+          >
+            <X className="h-4 w-4" />
+          </Button>
+        )}
         {renderContent()}
       </DialogContent>
     </Dialog>

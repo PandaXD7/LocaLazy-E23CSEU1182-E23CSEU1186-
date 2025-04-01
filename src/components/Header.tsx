@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Menu, X, User, ShoppingBag, MapPin, LogOut } from 'lucide-react';
+import { Search, Menu, X, User, ShoppingBag, MapPin, LogOut, Home, Store, Truck, Info, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SignupModal } from './SignupModal';
 import { useAppContext } from '@/contexts/AppContext';
@@ -55,7 +55,26 @@ const Header = () => {
           
           {/* Nav Links */}
           <nav className="flex items-center gap-6">
-            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/" className="nav-link flex items-center gap-1">
+              <Home className="h-4 w-4" />
+              <span>Home</span>
+            </Link>
+            
+            {/* Additional navigation links */}
+            <Link to="/about" className="nav-link flex items-center gap-1">
+              <Info className="h-4 w-4" />
+              <span>About</span>
+            </Link>
+            
+            <Link to="/stores" className="nav-link flex items-center gap-1">
+              <Store className="h-4 w-4" />
+              <span>Stores</span>
+            </Link>
+            
+            <Link to="/help" className="nav-link flex items-center gap-1">
+              <HelpCircle className="h-4 w-4" />
+              <span>Help</span>
+            </Link>
             
             {/* Customer links */}
             {user?.type === 'customer' && (
@@ -153,7 +172,26 @@ const Header = () => {
           </div>
           
           <nav className="flex flex-col gap-3 mb-4">
-            <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link to="/" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+              <Home className="h-4 w-4" />
+              <span>Home</span>
+            </Link>
+            
+            {/* Additional mobile navigation links */}
+            <Link to="/about" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+              <Info className="h-4 w-4" />
+              <span>About</span>
+            </Link>
+            
+            <Link to="/stores" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+              <Store className="h-4 w-4" />
+              <span>Stores</span>
+            </Link>
+            
+            <Link to="/help" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+              <HelpCircle className="h-4 w-4" />
+              <span>Help</span>
+            </Link>
             
             {user?.type === 'customer' && (
               <>

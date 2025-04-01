@@ -16,6 +16,8 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import DeliverySetupPage from "./pages/DeliverySetupPage";
 import DeliveryOrdersPage from "./pages/DeliveryOrdersPage";
+import AboutPage from "./pages/AboutPage";
+import HelpPage from "./pages/HelpPage";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,11 @@ const App = () => (
           <Route path="/signup/delivery" element={<AuthPage userType="delivery" />} />
           <Route path="/delivery/setup" element={<DeliverySetupPage />} />
           <Route path="/delivery/orders" element={<DeliveryOrdersPage />} />
+          
+          {/* Additional Pages */}
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/help" element={<HelpPage />} />
+          <Route path="/stores" element={<ShopsListPage />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
