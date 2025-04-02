@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
@@ -29,7 +30,7 @@ const signupSchema = z.object({
   path: ["confirmPassword"]
 });
 
-const AuthPage = ({ userType = 'customer' }: { userType?: 'customer' | 'delivery' }) => {
+const AuthPage = ({ userType = 'customer' }: { userType?: 'customer' | 'delivery' | 'store' }) => {
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
   const navigate = useNavigate();
   const { setUser } = useAppContext();
@@ -61,14 +62,17 @@ const AuthPage = ({ userType = 'customer' }: { userType?: 'customer' | 'delivery
     setUser({
       id: '123',
       email: values.email,
-      name: userType === 'delivery' ? 'Delivery Person' : 'Customer',
+      name: userType === 'delivery' ? 'Delivery Partner' : userType === 'store' ? 'Store Owner' : 'Customer',
       type: userType
     });
     
     toast.success("Login successful!");
     
+    // Direct users straight to their dashboard based on user type
     if (userType === 'delivery') {
-      navigate('/delivery/setup');
+      navigate('/delivery/orders');
+    } else if (userType === 'store') {
+      navigate('/store/dashboard');
     } else {
       navigate('/location');
     }
@@ -89,8 +93,11 @@ const AuthPage = ({ userType = 'customer' }: { userType?: 'customer' | 'delivery
     
     toast.success("Signup successful!");
     
+    // Direct users to appropriate page after signup
     if (userType === 'delivery') {
       navigate('/delivery/setup');
+    } else if (userType === 'store') {
+      navigate('/signup/store');
     } else {
       navigate('/location');
     }
@@ -103,7 +110,7 @@ const AuthPage = ({ userType = 'customer' }: { userType?: 'customer' | 'delivery
       <div className="container mx-auto px-4 py-10 pt-20">
         <div className="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8">
           <h1 className="text-2xl font-bold text-center mb-6">
-            {userType === 'delivery' ? 'Delivery Partner' : 'Customer'} {activeTab === 'login' ? 'Login' : 'Signup'}
+            {userType === 'delivery' ? 'Delivery Partner' : userType === 'store' ? 'Store Owner' : 'Customer'} {activeTab === 'login' ? 'Login' : 'Signup'}
           </h1>
           
           <Tabs defaultValue="login" value={activeTab} onValueChange={(value) => setActiveTab(value as 'login' | 'signup')}>

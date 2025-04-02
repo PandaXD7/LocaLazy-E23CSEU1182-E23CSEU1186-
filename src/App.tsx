@@ -40,6 +40,7 @@ const App = () => (
 
           {/* Store Routes */}
           <Route path="/signup/store" element={<StoreSignup />} />
+          <Route path="/auth/store" element={<AuthPage userType="store" />} />
           <Route path="/store/dashboard" element={<StoreDashboard />} />
 
           {/* Delivery Routes */}

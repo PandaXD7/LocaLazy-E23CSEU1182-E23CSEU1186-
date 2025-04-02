@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, User, Store, Truck } from 'lucide-react';
@@ -9,6 +10,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { toast } from 'sonner';
+import { useAppContext } from '@/contexts/AppContext';
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -18,6 +21,7 @@ interface SignupModalProps {
 export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   const [step, setStep] = useState<'userType' | 'login'>('userType');
   const navigate = useNavigate();
+  const { setUser } = useAppContext();
   
   const handleUserTypeSelect = (type: string) => {
     if (type === 'user') {
@@ -32,6 +36,39 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
     } else if (type === 'login') {
       setStep('login');
     }
+  };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // In a real app, this would authenticate the user
+    // We're simulating a successful login
+    
+    // Get form data
+    const form = e.target as HTMLFormElement;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const userType = (form.elements.namedItem('userType') as HTMLInputElement)?.value || 'customer';
+    
+    // Set user context (simulated login)
+    setUser({
+      id: '123',
+      email: email,
+      name: userType === 'delivery' ? 'Delivery Person' : userType === 'store' ? 'Store Owner' : 'Customer',
+      type: userType as 'customer' | 'store' | 'delivery'
+    });
+    
+    toast.success("Login successful!");
+    
+    // Direct to appropriate dashboard
+    if (userType === 'delivery') {
+      navigate('/delivery/orders');
+    } else if (userType === 'store') {
+      navigate('/store/dashboard');
+    } else {
+      navigate('/location');
+    }
+    
+    onClose();
   };
   
   const renderContent = () => {
@@ -100,8 +137,16 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                   <Button 
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate('/signup/store');
+                      // Set user and redirect to store dashboard directly
+                      setUser({
+                        id: '123',
+                        email: 'store@example.com',
+                        name: 'Store Owner',
+                        type: 'store'
+                      });
+                      navigate('/store/dashboard');
                       onClose();
+                      toast.success("Login successful!");
                     }}
                     variant="outline" 
                     size="sm"
@@ -138,8 +183,16 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                   <Button 
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate('/signup/delivery');
+                      // Set user and redirect to delivery dashboard directly
+                      setUser({
+                        id: '123',
+                        email: 'delivery@example.com',
+                        name: 'Delivery Partner',
+                        type: 'delivery'
+                      });
+                      navigate('/delivery/orders');
                       onClose();
+                      toast.success("Login successful!");
                     }}
                     variant="outline" 
                     size="sm"
@@ -174,16 +227,20 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
               </DialogDescription>
             </DialogHeader>
             
-            <div className="mt-8 space-y-4">
+            <form onSubmit={handleLogin} className="mt-8 space-y-4">
+              <input type="hidden" name="userType" value="customer" />
+              
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                   Email
                 </label>
                 <input 
                   id="email"
+                  name="email"
                   type="email" 
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-localazy-teal/50"
                   placeholder="Enter your email"
+                  required
                 />
               </div>
               
@@ -193,9 +250,11 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 </label>
                 <input 
                   id="password"
+                  name="password"
                   type="password" 
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-localazy-teal/50"
                   placeholder="Enter your password"
+                  required
                 />
               </div>
               
@@ -217,12 +276,12 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
               </div>
               
               <Button 
+                type="submit"
                 className="w-full bg-localazy-teal hover:bg-localazy-teal/90 text-white py-2 rounded-lg"
-                onClick={onClose}
               >
                 Log In
               </Button>
-            </div>
+            </form>
             
             <div className="mt-6 text-center text-sm text-gray-600">
               Don't have an account?{" "}
@@ -241,7 +300,6 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md md:max-w-xl">
-        {/* Only one close button */}
         <Button 
           variant="ghost" 
           size="icon" 
