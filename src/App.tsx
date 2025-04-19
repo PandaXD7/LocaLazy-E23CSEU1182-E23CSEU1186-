@@ -18,6 +18,9 @@ import DeliverySetupPage from "./pages/DeliverySetupPage";
 import DeliveryOrdersPage from "./pages/DeliveryOrdersPage";
 import AboutPage from "./pages/AboutPage";
 import HelpPage from "./pages/HelpPage";
+import CustomerProfilePage from "./pages/CustomerProfilePage";
+import StoreProfilePage from "./pages/StoreProfilePage";
+import DeliveryProfilePage from "./pages/DeliveryProfilePage";
 
 const queryClient = new QueryClient();
 
@@ -33,25 +36,27 @@ const App = () => (
           {/* Customer Routes */}
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/location" element={<LocationPage />} />
-          <Route path="/shops" element={<ShopsListPage />} />
+          <Route path="/stores" element={<ShopsListPage />} />
           <Route path="/shop/:id" element={<ShopDetailPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/profile/customer" element={<CustomerProfilePage />} />
 
           {/* Store Routes */}
           <Route path="/signup/store" element={<StoreSignup />} />
           <Route path="/auth/store" element={<AuthPage userType="store" />} />
           <Route path="/store/dashboard" element={<StoreDashboard />} />
+          <Route path="/profile/store" element={<StoreProfilePage />} />
 
           {/* Delivery Routes */}
           <Route path="/signup/delivery" element={<AuthPage userType="delivery" />} />
           <Route path="/delivery/setup" element={<DeliverySetupPage />} />
           <Route path="/delivery/orders" element={<DeliveryOrdersPage />} />
+          <Route path="/profile/delivery" element={<DeliveryProfilePage />} />
           
           {/* Additional Pages */}
           <Route path="/about" element={<AboutPage />} />
           <Route path="/help" element={<HelpPage />} />
-          <Route path="/stores" element={<ShopsListPage />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

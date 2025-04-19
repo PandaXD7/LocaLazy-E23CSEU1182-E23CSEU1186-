@@ -19,6 +19,18 @@ const Header = () => {
     setUser(null);
     navigate('/');
   };
+
+  const navigateToProfile = () => {
+    if (user) {
+      if (user.type === 'customer') {
+        navigate('/profile/customer');
+      } else if (user.type === 'store') {
+        navigate('/profile/store');
+      } else if (user.type === 'delivery') {
+        navigate('/profile/delivery');
+      }
+    }
+  };
   
   return (
     <header className="bg-white/80 backdrop-blur-md shadow-sm py-4 fixed w-full z-50">
@@ -76,13 +88,6 @@ const Header = () => {
               <span>Help</span>
             </Link>
             
-            {/* Customer links */}
-            {user?.type === 'customer' && (
-              <>
-                <Link to="/shops" className="nav-link">Shops</Link>
-              </>
-            )}
-            
             {/* Delivery links */}
             {user?.type === 'delivery' && (
               <Link to="/delivery/orders" className="nav-link">Orders</Link>
@@ -109,7 +114,12 @@ const Header = () => {
                 
                 {/* User menu */}
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" size="icon" className="text-localazy-teal">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="text-localazy-teal"
+                    onClick={navigateToProfile}
+                  >
                     <User className="h-5 w-5" />
                   </Button>
                   <Button 
@@ -194,16 +204,24 @@ const Header = () => {
             </Link>
             
             {user?.type === 'customer' && (
-              <>
-                <Link to="/shops" className="nav-link" onClick={() => setIsMenuOpen(false)}>Shops</Link>
-                <Link to="/cart" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-                  Cart {cartItemCount > 0 && `(${cartItemCount})`}
-                </Link>
-              </>
+              <Link to="/cart" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                Cart {cartItemCount > 0 && `(${cartItemCount})`}
+              </Link>
             )}
             
             {user?.type === 'delivery' && (
               <Link to="/delivery/orders" className="nav-link" onClick={() => setIsMenuOpen(false)}>Orders</Link>
+            )}
+            
+            {user && (
+              <Link 
+                to={`/profile/${user.type}`} 
+                className="nav-link flex items-center gap-2" 
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <User className="h-4 w-4" />
+                <span>Profile</span>
+              </Link>
             )}
           </nav>
           
