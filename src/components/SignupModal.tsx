@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, User, Store, Truck } from 'lucide-react';
@@ -50,6 +51,23 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
       address: '123 Main St',
     });
     navigate('/store/dashboard');
+    onClose();
+    toast.success("Login successful!");
+  };
+  
+  const handleDeliveryLogin = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setUser({
+      id: '124',
+      email: 'delivery@example.com',
+      name: 'Delivery Partner',
+      type: 'delivery',
+      phone: '123-456-7891',
+      vehicle: 'Motorcycle',
+      licenseNumber: 'DL12345',
+      availability: 'Full-time'
+    });
+    navigate('/delivery/orders');
     onClose();
     toast.success("Login successful!");
   };
@@ -185,6 +203,14 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 </p>
                 <div className="mt-4 flex flex-col gap-2 w-full">
                   <Button 
+                    onClick={handleDeliveryLogin}
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    Login
+                  </Button>
+                  <Button 
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate('/signup/delivery');
@@ -284,14 +310,7 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md md:max-w-xl">
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="absolute right-4 top-4"
-          onClick={onClose}
-        >
-          <X className="h-4 w-4" />
-        </Button>
+        {/* Removed the custom X button here since DialogContent already includes a close button */}
         {renderContent()}
       </DialogContent>
     </Dialog>
