@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -8,16 +7,23 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { User, MapPin, ShoppingBag, CreditCard, Bell } from 'lucide-react';
+import { User, MapPin, ShoppingBag, CreditCard, Bell, Clock, Package, Truck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import BackButton from '@/components/BackButton';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const CustomerProfilePage = () => {
   const { user, setUser } = useAppContext();
   const navigate = useNavigate();
   
-  // If no user is logged in or wrong user type, redirect to home
   React.useEffect(() => {
     if (!user || user.type !== 'customer') {
       navigate('/');
@@ -25,7 +31,6 @@ const CustomerProfilePage = () => {
     }
   }, [user, navigate]);
   
-  // User profile state
   const [profile, setProfile] = useState({
     name: user?.name || '',
     email: user?.email || '',
@@ -36,7 +41,6 @@ const CustomerProfilePage = () => {
   const handleProfileUpdate = (e: React.FormEvent) => {
     e.preventDefault();
     if (user) {
-      // Update user in context
       setUser({
         ...user,
         ...profile
@@ -45,6 +49,23 @@ const CustomerProfilePage = () => {
     }
   };
   
+  const { orders } = useAppContext();
+  
+  const getStatusBadgeColor = (status: string) => {
+    switch(status) {
+      case 'pending': return 'bg-yellow-100 text-yellow-800';
+      case 'accepted': return 'bg-blue-100 text-blue-800';
+      case 'preparing': return 'bg-purple-100 text-purple-800';
+      case 'out_for_delivery': return 'bg-indigo-100 text-indigo-800';
+      case 'delivered': return 'bg-green-100 text-green-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const formatStatus = (status: string) => {
+    return status.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  };
+
   if (!user || user.type !== 'customer') return null;
   
   return (
@@ -132,17 +153,75 @@ const CustomerProfilePage = () => {
                   <CardDescription>View your past orders</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-center py-8">
-                    <ShoppingBag className="h-12 w-12 mx-auto mb-4 text-gray-400" />
-                    <p className="text-gray-600">You don't have any orders yet</p>
-                    <Button 
-                      variant="outline" 
-                      className="mt-4 border-localazy-teal text-localazy-teal"
-                      onClick={() => navigate('/stores')}
-                    >
-                      Browse Stores
-                    </Button>
-                  </div>
+                  {orders.length > 0 ? (
+                    <div className="space-y-6">
+                      <div className="rounded-md border">
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Order ID</TableHead>
+                              <TableHead>Items</TableHead>
+                              <TableHead>Total</TableHead>
+                              <TableHead>Status</TableHead>
+                              <TableHead>Shop</TableHead>
+                              <TableHead>Delivery Info</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {orders.map((order) => (
+                              <TableRow key={order.id}>
+                                <TableCell className="font-medium">{order.id}</TableCell>
+                                <TableCell>
+                                  <div className="flex items-center gap-2">
+                                    <Package className="h-4 w-4 text-gray-500" />
+                                    <span>{order.items.length} items</span>
+                                  </div>
+                                </TableCell>
+                                <TableCell>₹{order.total.toFixed(2)}</TableCell>
+                                <TableCell>
+                                  <span className={`px-2 py-1 rounded-full text-xs ${getStatusBadgeColor(order.status)}`}>
+                                    {formatStatus(order.status)}
+                                  </span>
+                                </TableCell>
+                                <TableCell>{order.shopName}</TableCell>
+                                <TableCell>
+                                  {order.status === 'out_for_delivery' && order.deliveryPerson ? (
+                                    <div className="space-y-1">
+                                      <div className="flex items-center gap-2 text-sm">
+                                        <Truck className="h-4 w-4 text-localazy-teal" />
+                                        <span>{order.deliveryPerson.name}</span>
+                                      </div>
+                                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                                        <Clock className="h-4 w-4" />
+                                        <span>Est. 30 mins</span>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                                      <Clock className="h-4 w-4" />
+                                      <span>Processing</span>
+                                    </div>
+                                  )}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="text-center py-8">
+                      <ShoppingBag className="h-12 w-12 mx-auto mb-4 text-gray-400" />
+                      <p className="text-gray-600">You don't have any orders yet</p>
+                      <Button 
+                        variant="outline" 
+                        className="mt-4 border-localazy-teal text-localazy-teal"
+                        onClick={() => navigate('/stores')}
+                      >
+                        Browse Stores
+                      </Button>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </TabsContent>
