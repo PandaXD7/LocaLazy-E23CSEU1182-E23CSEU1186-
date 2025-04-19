@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Menu, X, User, ShoppingBag, MapPin, LogOut, Home, Store, Truck, Info, HelpCircle } from 'lucide-react';
@@ -67,15 +66,15 @@ const Header = () => {
           
           {/* Nav Links */}
           <nav className="flex items-center gap-6">
-            <Link to="/" className="nav-link flex items-center gap-1">
-              <Home className="h-4 w-4" />
-              <span>Home</span>
+            <Link to="/" className="nav-link flex items-center gap-1 text-blue-600 hover:text-blue-800">
+              <Home className="h-4 w-4 mr-1" />
+              Home
             </Link>
             
             {/* Additional navigation links */}
-            <Link to="/about" className="nav-link flex items-center gap-1">
-              <Info className="h-4 w-4" />
-              <span>About</span>
+            <Link to="/about" className="nav-link flex items-center gap-1 text-blue-600 hover:text-blue-800">
+              <Info className="h-4 w-4 mr-1" />
+              About
             </Link>
             
             <Link to="/stores" className="nav-link flex items-center gap-1">
@@ -83,14 +82,14 @@ const Header = () => {
               <span>Stores</span>
             </Link>
             
-            <Link to="/help" className="nav-link flex items-center gap-1">
-              <HelpCircle className="h-4 w-4" />
-              <span>Help</span>
+            <Link to="/help" className="nav-link flex items-center gap-1 text-blue-600 hover:text-blue-800">
+              <HelpCircle className="h-4 w-4 mr-1" />
+              Help
             </Link>
             
             {/* Delivery links */}
             {user?.type === 'delivery' && (
-              <Link to="/delivery/orders" className="nav-link">Orders</Link>
+              <Link to="/delivery/orders" className="nav-link text-blue-600 hover:text-blue-800">Orders</Link>
             )}
           </nav>
           
@@ -182,13 +181,13 @@ const Header = () => {
           </div>
           
           <nav className="flex flex-col gap-3 mb-4">
-            <Link to="/" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/" className="nav-link flex items-center gap-2 text-blue-600 hover:text-blue-800" onClick={() => setIsMenuOpen(false)}>
               <Home className="h-4 w-4" />
               <span>Home</span>
             </Link>
             
             {/* Additional mobile navigation links */}
-            <Link to="/about" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/about" className="nav-link flex items-center gap-2 text-blue-600 hover:text-blue-800" onClick={() => setIsMenuOpen(false)}>
               <Info className="h-4 w-4" />
               <span>About</span>
             </Link>
@@ -198,7 +197,7 @@ const Header = () => {
               <span>Stores</span>
             </Link>
             
-            <Link to="/help" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+            <Link to="/help" className="nav-link flex items-center gap-2 text-blue-600 hover:text-blue-800" onClick={() => setIsMenuOpen(false)}>
               <HelpCircle className="h-4 w-4" />
               <span>Help</span>
             </Link>
@@ -216,7 +215,7 @@ const Header = () => {
             {user && (
               <Link 
                 to={`/profile/${user.type}`} 
-                className="nav-link flex items-center gap-2" 
+                className="nav-link flex items-center gap-2 text-blue-600 hover:text-blue-800" 
                 onClick={() => setIsMenuOpen(false)}
               >
                 <User className="h-4 w-4" />
