@@ -1,8 +1,7 @@
+import type { Config } from 'tailwindcss'
 
-import type { Config } from "tailwindcss";
-
-export default {
-	darkMode: ["class"],
+const config: Config = {
+  darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
@@ -64,7 +63,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				localazy: {
-          teal: '#3ABDB7',
+          teal: '#48B0D0',
           coral: '#FF7F6B',
           navy: '#1F3A5F',
           cream: '#FFF8E1',
@@ -148,4 +147,6 @@ export default {
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+}
+
+export default config
