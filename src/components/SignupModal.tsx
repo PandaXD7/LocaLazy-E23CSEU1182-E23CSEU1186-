@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, User, Store, Truck } from 'lucide-react';
@@ -36,6 +35,19 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
     } else if (type === 'login') {
       setStep('login');
     }
+  };
+
+  const handleBusinessLogin = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setUser({
+      id: '123',
+      email: 'store@example.com',
+      name: 'Store Owner',
+      type: 'store'
+    });
+    navigate('/store/dashboard');
+    onClose();
+    toast.success("Login successful!");
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -135,19 +147,7 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                 </p>
                 <div className="mt-4 flex flex-col gap-2 w-full">
                   <Button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Set user and redirect to store dashboard directly
-                      setUser({
-                        id: '123',
-                        email: 'store@example.com',
-                        name: 'Store Owner',
-                        type: 'store'
-                      });
-                      navigate('/store/dashboard');
-                      onClose();
-                      toast.success("Login successful!");
-                    }}
+                    onClick={handleBusinessLogin}
                     variant="outline" 
                     size="sm"
                     className="w-full"
@@ -180,26 +180,6 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
                   I want to become a delivery partner
                 </p>
                 <div className="mt-4 flex flex-col gap-2 w-full">
-                  <Button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Set user and redirect to delivery dashboard directly
-                      setUser({
-                        id: '123',
-                        email: 'delivery@example.com',
-                        name: 'Delivery Partner',
-                        type: 'delivery'
-                      });
-                      navigate('/delivery/orders');
-                      onClose();
-                      toast.success("Login successful!");
-                    }}
-                    variant="outline" 
-                    size="sm"
-                    className="w-full"
-                  >
-                    Login
-                  </Button>
                   <Button 
                     onClick={(e) => {
                       e.stopPropagation();
