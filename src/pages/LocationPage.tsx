@@ -43,7 +43,7 @@ const LocationPage = () => {
   const selectLocation = (location: string) => {
     setCurrentLocation(location);
     toast.success("Location set successfully!");
-    navigate('/shops');
+    navigate('/stores');
   };
   
   const detectLocation = () => {
