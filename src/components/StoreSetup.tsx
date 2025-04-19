@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface StoreSetupProps {
-  onComplete: () => void;
+  onComplete: (storeData: any) => void;
 }
 
 export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
@@ -15,7 +15,11 @@ export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
     contact: '',
     tagline: '',
     description: '',
-    businessType: ''
+    businessType: '',
+    phone: '',
+    address: '',
+    openingHours: '9:00 AM - 6:00 PM',
+    category: 'General'
   });
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,7 +35,7 @@ export const StoreSetup = ({ onComplete }: StoreSetupProps) => {
     if (step < 5) {
       setStep(step + 1);
     } else {
-      onComplete();
+      onComplete(formData);
     }
   };
   

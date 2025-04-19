@@ -5,13 +5,29 @@ import { StoreSetup } from '@/components/StoreSetup';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import BackButton from '@/components/BackButton';
+import { useAppContext } from '@/contexts/AppContext';
 
 const StoreSignup = () => {
   const [setupComplete, setSetupComplete] = useState(false);
   const navigate = useNavigate();
+  const { setUser } = useAppContext();
   
-  const handleSetupComplete = () => {
+  const handleSetupComplete = (storeData: any) => {
     setSetupComplete(true);
+    
+    // Update user context with store details
+    setUser({
+      id: '123',
+      email: storeData.email,
+      name: storeData.storeName,
+      type: 'store',
+      storeName: storeData.storeName,
+      storeDescription: storeData.description,
+      category: storeData.category,
+      phone: storeData.phone,
+      address: storeData.address,
+      openingHours: storeData.openingHours
+    });
     
     // Show success message
     toast.success('Store setup complete!', {

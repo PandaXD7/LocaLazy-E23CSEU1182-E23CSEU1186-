@@ -43,7 +43,11 @@ export const SignupModal = ({ isOpen, onClose }: SignupModalProps) => {
       id: '123',
       email: 'store@example.com',
       name: 'Store Owner',
-      type: 'store'
+      type: 'store',
+      storeName: 'Sample Store',
+      category: 'General',
+      phone: '123-456-7890',
+      address: '123 Main St',
     });
     navigate('/store/dashboard');
     onClose();
