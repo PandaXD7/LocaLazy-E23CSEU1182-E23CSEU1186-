@@ -34,7 +34,6 @@ const Header = () => {
   return (
     <header className="bg-white/80 backdrop-blur-md shadow-sm py-4 fixed w-full z-50">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-full bg-localazy-teal flex items-center justify-center">
             <span className="text-white font-bold text-xl">L</span>
@@ -42,7 +41,6 @@ const Header = () => {
           <span className="font-display font-bold text-xl text-localazy-navy">LocaLazy</span>
         </Link>
         
-        {/* Location - show only if logged in */}
         {user && (
           <div className="hidden md:flex items-center gap-1 cursor-pointer" onClick={() => navigate('/location')}>
             <MapPin className="h-4 w-4 text-localazy-teal" />
@@ -50,9 +48,7 @@ const Header = () => {
           </div>
         )}
         
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-8">
-          {/* Search Bar */}
           {user && user.type === 'customer' && (
             <div className="relative">
               <input 
@@ -64,14 +60,12 @@ const Header = () => {
             </div>
           )}
           
-          {/* Nav Links */}
           <nav className="flex items-center gap-6">
             <Link to="/" className="nav-link flex items-center gap-1 text-blue-600 hover:text-blue-800">
               <Home className="h-4 w-4 mr-1" />
               Home
             </Link>
             
-            {/* Additional navigation links */}
             <Link to="/about" className="nav-link flex items-center gap-1 text-blue-600 hover:text-blue-800">
               <Info className="h-4 w-4 mr-1" />
               About
@@ -87,20 +81,17 @@ const Header = () => {
               Help
             </Link>
             
-            {/* Delivery links */}
             {user?.type === 'delivery' && (
               <Link to="/delivery/orders" className="nav-link text-blue-600 hover:text-blue-800">Orders</Link>
             )}
           </nav>
           
-          {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             {user ? (
               <>
-                {/* Cart button - only for customers */}
                 {user.type === 'customer' && (
                   <Link to="/cart">
-                    <Button variant="ghost" size="icon" className="text-localazy-teal relative">
+                    <Button variant="ghost" size="icon" className="text-blue-600 hover:text-blue-800 relative">
                       <ShoppingBag className="h-5 w-5" />
                       {cartItemCount > 0 && (
                         <span className="absolute -top-1 -right-1 bg-localazy-coral h-4 w-4 rounded-full text-white flex items-center justify-center text-xs">
@@ -111,12 +102,11 @@ const Header = () => {
                   </Link>
                 )}
                 
-                {/* User menu */}
                 <div className="flex items-center gap-2">
                   <Button 
                     variant="ghost" 
                     size="icon" 
-                    className="text-localazy-teal"
+                    className="text-blue-600 hover:text-blue-800"
                     onClick={navigateToProfile}
                   >
                     <User className="h-5 w-5" />
@@ -143,7 +133,6 @@ const Header = () => {
           </div>
         </div>
         
-        {/* Mobile Menu Button */}
         <Button 
           variant="ghost" 
           size="icon" 
@@ -154,7 +143,6 @@ const Header = () => {
         </Button>
       </div>
       
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-6 border-t border-gray-100 animate-fade-in z-50">
           {user && (
@@ -186,7 +174,6 @@ const Header = () => {
               <span>Home</span>
             </Link>
             
-            {/* Additional mobile navigation links */}
             <Link to="/about" className="nav-link flex items-center gap-2 text-blue-600 hover:text-blue-800" onClick={() => setIsMenuOpen(false)}>
               <Info className="h-4 w-4" />
               <span>About</span>
@@ -252,7 +239,6 @@ const Header = () => {
         </div>
       )}
       
-      {/* Sign-up Modal */}
       <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
     </header>
   );
